@@ -259,8 +259,8 @@ export function getMessageImages(message: RequestMessage): string[] {
 }
 
 // 根据链接后缀名返回文件类型
-export function getFileTypeFromUrl(fileUrl: string) {
-  const extension = fileUrl.split(".").pop()?.toLowerCase();
+export function getFileTypeFromUrl(fileUrl: string): string {
+  const extension = fileUrl.split(".").pop()?.toLowerCase() || "";
 
   if (["jpg", "jpeg", "png", "gif", "bmp", "webp"].includes(extension)) {
     return "image";

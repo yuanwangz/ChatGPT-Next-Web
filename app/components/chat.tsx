@@ -67,6 +67,7 @@ import {
   getIconForFileType,
   isVisionModel,
   isDalle3,
+  isMultiModel,
 } from "../utils";
 
 import { uploadImage as uploadImageRemote } from "@/app/utils/chat";
@@ -1333,8 +1334,14 @@ function _Chat() {
     images.push(
       ...(await new Promise<string[]>((res, rej) => {
         const fileInput = document.createElement("input");
+        const currentModel = chatStore.currentSession().mask.modelConfig.model;
         fileInput.type = "file";
-        fileInput.accept = "*/*";
+        if (isMultiModel(currentModel)) {
+          fileInput.accept = "*/*";
+        } else {
+          fileInput.accept =
+            "image/png, image/jpeg, image/webp, image/heic, image/heif";
+        }
         fileInput.multiple = true;
         fileInput.onchange = (event: any) => {
           setUploading(true);

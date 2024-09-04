@@ -316,6 +316,16 @@ export function isVisionModel(model: string) {
   );
 }
 
+export function isMultiModel(model: string) {
+  const multiKeywords = ["vision", "gpt-4o", "gpt-4o-mini"];
+  const isGpt4Turbo =
+    model.includes("gpt-4-turbo") && !model.includes("preview");
+
+  return (
+    multiKeywords.some((keyword) => model.includes(keyword)) || isGpt4Turbo
+  );
+}
+
 export function isDalle3(model: string) {
   return "dall-e-3" === model;
 }

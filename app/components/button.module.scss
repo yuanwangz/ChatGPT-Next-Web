@@ -71,10 +71,10 @@
 }
 
 .icon-button-text {
-  font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 14px;
 
   &:not(:first-child) {
     margin-left: 5px;

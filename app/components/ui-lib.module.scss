@@ -52,12 +52,13 @@
     }
 
     .list-item-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bolder;
     }
 
     .list-item-sub-title {
-      font-size: 12px;
+      font-size: 14px;
+      padding-top: 6px;
       font-weight: normal;
     }
   }
@@ -268,6 +269,7 @@
     background-color: var(--white);
     color: var(--black);
     text-align: center;
+    font-size: 14px;
   }
 
   .select-with-icon-icon {

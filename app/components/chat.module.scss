@@ -59,8 +59,8 @@
     transition: width ease 0.3s;
     align-items: center;
     height: 16px;
-    width: var(--icon-width);
     overflow: hidden;
+    width: auto !important;
 
     &:not(:last-child) {
       margin-right: 5px;
@@ -69,10 +69,10 @@
     .text {
       white-space: nowrap;
       padding-left: 5px;
-      opacity: 0;
-      transform: translateX(-5px);
       transition: all ease 0.3s;
       pointer-events: none;
+      opacity: 1;
+      transform: none;
     }
 
     &:hover {
@@ -290,6 +290,7 @@
   padding-bottom: 40px;
   position: relative;
   overscroll-behavior: none;
+  //padding: 20px 5% 40px;
 }
 
 .chat-body-main-title {
@@ -385,15 +386,18 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: all ease 0.3s;
+    display: none;
 
     button {
       padding: 7px;
     }
+  }
+  .no-dark svg g rect {
+    fill: #fff !important;
   }
 
   /* Specific styles for iOS devices */
@@ -446,6 +450,7 @@
 .chat-message-item-image {
   width: 100%;
   margin-top: 10px;
+  max-width: 400px;
 }
 
 .chat-message-item-images {
@@ -513,10 +518,11 @@
   padding-right: 10px;
   pointer-events: none;
   z-index: 1;
+  display: none !important;
 }
 
 .chat-message-user>.chat-message-container>.chat-message-item {
-  background-color: var(--second);
+  background-color: var(--chat-message-item);
 
   &:hover {
     min-width: 0;
@@ -532,6 +538,7 @@
   flex-direction: column;
   border-top: var(--border-in-light);
   box-shadow: var(--card-shadow);
+  //padding: 20px 5% 40px;
 
   .chat-input-actions {
     .chat-input-action {
@@ -623,7 +630,7 @@
   resize: none;
   outline: none;
   box-sizing: border-box;
-  min-height: 68px;
+  min-height: 130px;
 }
 
 .chat-input:focus {}
@@ -631,10 +638,12 @@
 .chat-input-send {
   background-color: var(--primary);
   color: white;
-
-  position: absolute;
+  //right: 17%;
+  //bottom: 50px;
   right: 30px;
   bottom: 32px;
+
+  position: absolute;
 }
 
 @media only screen and (max-width: 600px) {

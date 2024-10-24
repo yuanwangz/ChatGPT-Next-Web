@@ -113,7 +113,7 @@
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
-      display: flex;
+      display: none;
       justify-content: space-between;
       align-items: flex-end;
       position: relative;
@@ -169,6 +169,12 @@
         &:not(:last-child) {
           margin-bottom: 5px;
         }
+      }
+      .message-user body{
+        background: #fff;
+      }
+      .message-assistant body{
+        background: #f2f2f2;
       }
     }
 

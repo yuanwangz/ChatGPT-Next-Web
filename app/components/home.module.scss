@@ -7,14 +7,13 @@
   background-color: var(--white);
   min-width: 600px;
   min-height: 370px;
-  max-width: 1200px;
+  width: 98vw !important;
+  height: 98vh !important;
+  max-width: 100% !important;
 
   display: flex;
   overflow: hidden;
   box-sizing: border-box;
-
-  width: var(--window-width);
-  height: var(--window-height);
 }
 
 .container {
@@ -48,6 +47,7 @@
   box-shadow: inset -2px 0px 2px 0px rgb(0, 0, 0, 0.05);
   position: relative;
   transition: width ease 0.05s;
+  box-shadow: none !important;
 
   .sidebar-header-bar {
     display: flex;
@@ -147,6 +147,7 @@
 
 .sidebar-logo {
   display: inline-flex;
+  fill: #999;
 }
 
 .sidebar-title-container {
@@ -196,22 +197,23 @@
 
 .chat-item-title {
   font-size: 14px;
-  font-weight: bolder;
   display: block;
   width: calc(100% - 15px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   animation: slide-in ease 0.3s;
+  font-weight: 500;
 }
 
 .chat-item-delete {
   position: absolute;
-  top: 0;
-  right: 0;
   transition: all ease 0.3s;
   opacity: 0;
   cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%) !important;
+  right: 10px;
 }
 
 .chat-item:hover > .chat-item-delete {
@@ -224,7 +226,7 @@
 }
 
 .chat-item-info {
-  display: flex;
+  display: none;
   justify-content: space-between;
   color: rgb(166, 166, 166);
   font-size: 12px;
@@ -269,6 +271,8 @@
     align-items: center;
     transition: all ease 0.3s;
     overflow: hidden;
+    margin-bottom: 5px !important;
+    position: relative !important;
 
     &:hover {
       .chat-item-narrow {
@@ -308,6 +312,7 @@
   .sidebar-tail {
     flex-direction: column-reverse;
     align-items: center;
+    width: 100%;
 
     .sidebar-actions {
       flex-direction: column-reverse;
@@ -329,7 +334,28 @@
 
 .sidebar-actions {
   display: inline-flex;
+
 }
+.sidebar-actions > .sidebar-action:nth-child(3) {
+  display: none !important;
+}
+.sidebar-actions:nth-child(2) {
+  width: 100% !important;
+  margin-bottom: 10px;
+  button {
+    width: 100% !important;
+    height: 40px !important;
+    background: #333 !important;
+    color: #fff !important;
+    .icon-button-icon {
+      transform: scale(1.2);
+    }
+    svg {
+      fill: #fff !important;
+    }
+  }
+}
+
 
 .sidebar-action:not(:last-child) {
   margin-right: 15px;

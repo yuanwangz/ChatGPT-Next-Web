@@ -303,19 +303,23 @@ export function getIconForFileType(fileType: string) {
 export function isVisionModel(model: string) {
   // Note: This is a better way using the TypeScript feature instead of `&&` or `||` (ts v5.5.0-dev.20240314 I've been using)
 
+  const excludeKeywords = ["claude-3-5-haiku-20241022"];
   const visionKeywords = [
     "vision",
-    "claude-3",
-    "gemini-1.5-pro",
-    "gemini-1.5-flash",
     "gpt-4o",
-    "gpt-4o-mini",
+    "claude-3",
+    "gemini-1.5",
+    "qwen-vl",
+    "qwen2-vl",
   ];
   const isGpt4Turbo =
     model.includes("gpt-4-turbo") && !model.includes("preview");
 
   return (
-    visionKeywords.some((keyword) => model.includes(keyword)) || isGpt4Turbo
+    !excludeKeywords.some((keyword) => model.includes(keyword)) &&
+    (visionKeywords.some((keyword) => model.includes(keyword)) ||
+      isGpt4Turbo ||
+      isDalle3(model))
   );
 }
 
@@ -337,7 +341,8 @@ export function showPlugins(provider: ServiceProvider, model: string) {
   if (
     provider == ServiceProvider.OpenAI ||
     provider == ServiceProvider.Azure ||
-    provider == ServiceProvider.Moonshot
+    provider == ServiceProvider.Moonshot ||
+    provider == ServiceProvider.ChatGLM
   ) {
     return true;
   }
